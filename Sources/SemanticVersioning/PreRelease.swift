@@ -15,10 +15,15 @@ extension PreRelease: ExpressibleByStringLiteral {
     public init(stringLiteral value: StringLiteralType) {
         do {
             self = try PreRelease(from: value)
-        } catch let error as PreReleaseError {
-            fatalError("\(value) is invalid Semantic Versioning. \(error.description)")
+        } catch let error as PreReleaseParseError {
+            fatalError("""
+                       \(value) is invalid Semantic Versioning.
+                       \(error.description)
+                       """)
         } catch {
-            fatalError("\(value) is invalid Semantic Versioning")
+            fatalError("""
+                       \(value) is invalid Semantic Versioning.
+                       """)
         }
     }
 }

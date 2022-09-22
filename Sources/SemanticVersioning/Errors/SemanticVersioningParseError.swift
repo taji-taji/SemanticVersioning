@@ -12,11 +12,20 @@ public enum PreReleaseParseError: Error, CustomStringConvertible {
     public var description: String {
         switch self {
         case .empty:
-            return "pre-release identifiers MUST NOT be empty"
+            return """
+                   pre-release identifiers MUST NOT be empty.
+                   Ref: https://semver.org/#spec-item-9
+                   """
         case .invalidCharacter:
-            return "pre-release identifiers must not "
+            return """
+                   pre-release identifiers MUST comprise only ASCII alphanumerics and hyphens [0-9A-Za-z-].
+                   Ref: https://semver.org/#spec-item-9
+                   """
         case .leadingZero:
-            return "pre-release numeric identifiers MUST NOT include leading zeroes."
+            return """
+                   pre-release numeric identifiers MUST NOT include leading zeroes.
+                   Ref: https://semver.org/#spec-item-9
+                   """
         }
     }
 }
