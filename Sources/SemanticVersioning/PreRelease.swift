@@ -17,12 +17,12 @@ extension PreRelease: ExpressibleByStringLiteral {
             self = try PreRelease(from: value)
         } catch let error as PreReleaseParseError {
             fatalError("""
-                       \(value) is invalid Semantic Versioning.
+                       pre-release parse failed. input: \(value)
                        \(error.description)
                        """)
         } catch {
             fatalError("""
-                       \(value) is invalid Semantic Versioning.
+                       pre-release parse failed. input: \(value)
                        """)
         }
     }
