@@ -3,10 +3,10 @@ import Foundation
 enum SemanticVersioningParser {
     static func parse<V: SemanticVersioning>(from string: String) throws -> V {
         guard !string.isEmpty else {
-            throw SemanticVersioningError.empty
+            throw SemanticVersioningParseError.empty
         }
         guard string.allSatisfy({ $0.isASCII || $0 == "-" }) else {
-            throw SemanticVersioningError.containsInvalidCharacter
+            throw SemanticVersioningParseError.containsInvalidCharacter
         }
 
         // ref: https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
@@ -16,7 +16,7 @@ enum SemanticVersioningParser {
         let matches = captureRegex.matches(in: string, options: [], range: range)
 
         guard let match = matches.first else {
-            throw SemanticVersioningError.invalidFormat
+            throw SemanticVersioningParseError.invalidFormat
         }
         var captures: [String: String] = [:]
 
@@ -32,7 +32,7 @@ enum SemanticVersioningParser {
         guard let majorString = captures["major"],
               let minorString = captures["minor"],
               let patchString = captures["patch"] else {
-            throw SemanticVersioningError.invalidFormat
+            throw SemanticVersioningParseError.invalidFormat
         }
 
         let preRelease: PreRelease? = try { () throws -> PreRelease? in

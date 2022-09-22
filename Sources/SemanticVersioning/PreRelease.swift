@@ -53,14 +53,14 @@ extension PreRelease {
 
         init(from string: String) throws {
             guard !string.isEmpty else {
-                throw PreReleaseError.empty
+                throw PreReleaseParseError.empty
             }
             guard string.allSatisfy({ $0.isASCII || $0 == "-" }) else {
-                throw PreReleaseError.invalidCharacter
+                throw PreReleaseParseError.invalidCharacter
             }
             if let intValue = Int(string) {
                 guard string.first != "0" else {
-                    throw PreReleaseError.leadingZero
+                    throw PreReleaseParseError.leadingZero
                 }
                 self = .int(intValue)
             } else {

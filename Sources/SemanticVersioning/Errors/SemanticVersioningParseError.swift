@@ -1,10 +1,10 @@
-public enum SemanticVersioningError: Error {
+public enum SemanticVersioningParseError: Error {
     case empty
     case containsInvalidCharacter
     case invalidFormat
 }
 
-public enum PreReleaseError: Error, CustomStringConvertible {
+public enum PreReleaseParseError: Error, CustomStringConvertible {
     case empty
     case invalidCharacter
     case leadingZero
