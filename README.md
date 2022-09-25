@@ -2,6 +2,13 @@
 
 This package provides the Swift protocol compatible with [Semantic Versioning (2.0.0)](https://semver.org/).
 
+
+![Test](https://github.com/taji-taji/SemanticVersioning/actions/workflows/test.yml/badge.svg)
+[![MIT License](https://img.shields.io/github/license/taji-taji/SemanticVersioning)](https://github.com/taji-taji/SemanticVersioning/blob/main/LICENSE)
+[![Latest Version](https://img.shields.io/github/v/release/taji-taji/SemanticVersioning?label=latest%20version)](https://github.com/taji-taji/SemanticVersioning/releases/latest)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Ftaji-taji%2FSemanticVersioning%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/taji-taji/SemanticVersioning)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Ftaji-taji%2FSemanticVersioning%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/taji-taji/SemanticVersioning)
+
 ## Features
 
 - By conforming to the `SemanticVersioning` protocol, it can be represented as a type that behaves as a version of software compliant with Semantic Versioning (2.0.0).
@@ -50,7 +57,7 @@ This package provides the Swift protocol compatible with [Semantic Versioning (2
 ## Requirements
 
 - Swift 5.5 or later
-- macOS 10.13
+- macOS 10.13+ or iOS 11.0+ or watchOS 4.0+ or tvOS 11.0+
 
 ## Supported Platforms
 
