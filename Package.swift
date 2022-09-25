@@ -39,7 +39,7 @@ let package = Package(
         .testTarget(
             name: "SemanticVersioningExtendedTests",
             dependencies: ["SemanticVersioningExtended", "Mocks"]),
-        .testTarget(
+        .target(
             name: "Mocks",
             dependencies: ["SemanticVersioning"]),
     ]
