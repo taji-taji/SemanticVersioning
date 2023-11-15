@@ -1,4 +1,5 @@
 import Foundation
+import SemanticVersioningParser
 
 public protocol SemanticVersioning: Comparable, CustomStringConvertible, ExpressibleByStringLiteral where StringLiteralType == String, UnicodeScalarLiteralType == String, ExtendedGraphemeClusterLiteralType == String {
     var major: Int { get }
@@ -45,7 +46,20 @@ extension SemanticVersioning {
     }
 
     public init(from string: String) throws {
-        self = try SemanticVersioningParser.parse(from: string)
+        let result = try SemanticVersioningParser.parse(from: string)
+        let preRelease: PreRelease? = {
+            if let preReleaseString = result.preRelease {
+                return try? PreRelease(from: preReleaseString)
+            } else {
+                return nil
+            }
+        }()
+        
+        self.init(major: result.major,
+                  minor: result.minor,
+                  patch: result.patch,
+                  preRelease: preRelease,
+                  buildMetaData: result.buildMetaData)
     }
 
     public init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {

@@ -53,11 +53,19 @@ This package provides the Swift protocol compatible with [Semantic Versioning (2
   print(appVersion.increment(.patch))
   // -> 1.1.2
   ```
+  
+- Validate version format with macro.
+  ```swift
+  import SemanticVersioningMacro
+
+  let validVersionString = #semanticVersioning("1.0.0") // Valid format!
+  let invalidVersionString = #semanticVersioning("1.0.a") // Invalid format! Compile error!
+  ```
 
 ## Requirements
 
-- Swift 5.5 or later
-- macOS 10.13+ or iOS 11.0+ or watchOS 4.0+ or tvOS 11.0+
+- Swift 5.9 or later
+- macOS 10.15+ or iOS 12.0+ or watchOS 4.0+ or tvOS 1.0+
 
 ## Supported Platforms
 
@@ -71,11 +79,13 @@ This package provides the Swift protocol compatible with [Semantic Versioning (2
 1. Add SemanticVersioning to your `Package.swift`  dependencies:
 
     ```swift
-    .package(url: "https://github.com/taji-taji/SemanticVersioning.git", from: "0.0.1")
+    .package(url: "https://github.com/taji-taji/SemanticVersioning.git", from: "1.0.0")
     ```
 
 2. Add SemanticVersioning to your dependencies of `SemanticVersioning` target:
 
     ```swift
-    .product(name: "SemanticVersioning", package: "SemanticVersioning")
+    .product(name: "SemanticVersioning", package: "SemanticVersioning"),
+    // If you want to use macro, add `SemanticVersioningMacro`. 
+    .product(name: "SemanticVersioningMacro", package: "SemanticVersioning"),
     ```
