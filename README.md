@@ -56,6 +56,8 @@ This package provides the Swift protocol compatible with [Semantic Versioning (2
   
 - Validate version format with macro.
   ```swift
+  import SemanticVersioningMacro
+
   let validVersionString = #semanticVersioning("1.0.0") // Valid format!
   let invalidVersionString = #semanticVersioning("1.0.a") // Invalid format! Compile error!
   ```
@@ -83,5 +85,7 @@ This package provides the Swift protocol compatible with [Semantic Versioning (2
 2. Add SemanticVersioning to your dependencies of `SemanticVersioning` target:
 
     ```swift
-    .product(name: "SemanticVersioning", package: "SemanticVersioning")
+    .product(name: "SemanticVersioning", package: "SemanticVersioning"),
+    // If you want to use macro, add `SemanticVersioningMacro`. 
+    .product(name: "SemanticVersioningMacro", package: "SemanticVersioning"),
     ```
